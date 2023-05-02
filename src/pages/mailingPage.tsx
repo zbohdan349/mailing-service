@@ -1,4 +1,4 @@
-import { Alert, Box, Button, Collapse, Container, Divider, List, ListItem, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material"
+import { Alert, Box, Button, Collapse, Container, Divider, Grid, LinearProgress, List, ListItem, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material"
 import MainLayout from "../layouts/mainLayout"
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
@@ -33,24 +33,28 @@ export const MailingPage = () => {
 					Statistics
 				</Typography>
 				<Divider sx={{ marginBottom: 1 }} />
+				<Grid container spacing={2} sx={{ p: 2 }}>
+					<Grid item xs={6} md={9}>
+						<div style={{ flexGrow: 1 }}>
+							<Box sx={{ width: '100%', mr: 1, }}>
+								<LinearProgress variant="determinate" value={80} />
+							</Box>
+						</div>
+					</Grid>
+					<Grid item xs={6} md={3}>
+						<div>
+							<Box sx={{ width: 1 }}>
+								<Typography variant="body2">{`${"320000"}/1000000000000000`}</Typography>
+							</Box>
+						</div>
+					</Grid>
+				</Grid>
+
 				<List
 					sx={{ width: '100%' }}
 					component="div"
 				>
-					<ListItem>
-						<Alert severity="info" sx={
-							{ width: '100%' }
-						}>
-							<Typography><strong>10</strong> Mailing participants</Typography>
-						</Alert>
-					</ListItem>
-					<ListItem>
-						<Alert severity="success" sx={
-							{ width: '100%' }
-						}>
-							<Typography><strong>7</strong> Successfully delivered messages</Typography>
-						</Alert>
-					</ListItem>
+
 					<ListItem onClick={() => { setOpenWarnings(!openWarnings) }}>
 						<Alert severity="warning" sx={
 							{ width: '100%' }
@@ -115,6 +119,6 @@ export const MailingPage = () => {
 					</Collapse>
 				</List>
 			</Container>
-		</MainLayout>
+		</MainLayout >
 	)
 }

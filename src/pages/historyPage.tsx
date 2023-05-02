@@ -1,32 +1,46 @@
+import { Container, Typography } from "@mui/material"
+import { Mailing, MailingStatus, MailingElement } from "../components/mailing"
 import MainLayout from "../layouts/mainLayout"
-import { Mailing, MailingList } from "../components/mailingsList";
+
+const mailingInfo: Mailing[] = [
+	{
+		mailingName: 'Test Mailing 1',
+		mailingStatus: MailingStatus.FINISHED
+	},
+	{
+		mailingName: 'Test Mailing 2',
+		mailingStatus: MailingStatus.FINISHED
+	},
+	{
+		mailingName: 'Test Mailing 3',
+		mailingStatus: MailingStatus.FINISHED
+	},
+	{
+		mailingName: 'Test Mailing 4',
+		mailingStatus: MailingStatus.FINISHED
+	},
+	{
+		mailingName: 'Test Mailing 5',
+		mailingStatus: MailingStatus.FINISHED
+	},
+]
+
+const printMailings = (mailingsInfo: Mailing[]) => {
+	return mailingsInfo.map((mailing) => {
+		return <MailingElement mailingName={mailing.mailingName} mailingStatus={mailing.mailingStatus} />
+	})
+}
 
 export const HistoryPage = () => {
-	const mailingInfo: Mailing[] = [
-		{
-			mailingName: 'Test Mailing 1',
-			mailingProgress: 0
-		},
-		{
-			mailingName: 'Test Mailing 2',
-			mailingProgress: 50
-		},
-		{
-			mailingName: 'Test Mailing 3',
-			mailingProgress: 78
-		},
-		{
-			mailingName: 'Test Mailing 4',
-			mailingProgress: 86
-		},
-		{
-			mailingName: 'Test Mailing 5',
-			mailingProgress: 100
-		},
-	]
+
 	return (
 		<MainLayout>
-			<MailingList mailings={mailingInfo} title={"History"} />
+			<Container maxWidth="md" >
+				<Typography variant="h2" gutterBottom>
+					{"History"}
+				</Typography>
+				{printMailings(mailingInfo)}
+			</Container>
 		</MainLayout>
 	)
 }

@@ -1,34 +1,49 @@
+
+import { Mailing, MailingElement, MailingStatus } from "../components/mailing";
 import MainLayout from "../layouts/mainLayout"
-import { Mailing, MailingList } from "../components/mailingsList";
+
+import { Container, Typography } from "@mui/material";
 
 
+const mailingInfo: Mailing[] = [
+	{
+		mailingName: 'Test Mailing 1',
+		mailingStatus: MailingStatus.ACTIVE
+	},
+	{
+		mailingName: 'Test Mailing 2',
+		mailingStatus: MailingStatus.ACTIVE
+	},
+	{
+		mailingName: 'Test Mailing 3',
+		mailingStatus: MailingStatus.ACTIVE
+	},
+	{
+		mailingName: 'Test Mailing 4',
+		mailingStatus: MailingStatus.ACTIVE
+	},
+	{
+		mailingName: 'Test Mailing 5',
+		mailingStatus: MailingStatus.ACTIVE
+	},
+]
+
+const printMailings = (mailingsInfo: Mailing[]) => {
+	return mailingsInfo.map((mailing) => {
+		return <MailingElement mailingName={mailing.mailingName} mailingStatus={MailingStatus.ACTIVE} />
+	})
+}
 
 export const MainPage = () => {
-	const mailingInfo: Mailing[] = [
-		{
-			mailingName: 'Test Mailing 1',
-			mailingProgress: 0
-		},
-		{
-			mailingName: 'Test Mailing 2',
-			mailingProgress: 50
-		},
-		{
-			mailingName: 'Test Mailing 3',
-			mailingProgress: 78
-		},
-		{
-			mailingName: 'Test Mailing 4',
-			mailingProgress: 86
-		},
-		{
-			mailingName: 'Test Mailing 5',
-			mailingProgress: 100
-		},
-	]
+
 	return (
 		<MainLayout>
-			<MailingList mailings={mailingInfo} title={"Active Mailing"} />
+			<Container maxWidth="md" >
+				<Typography variant="h2" gutterBottom>
+					{"Active mailing"}
+				</Typography>
+				{printMailings(mailingInfo)}
+			</Container>
 		</MainLayout>
 	)
 }
