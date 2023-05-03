@@ -1,8 +1,10 @@
 import MainLayout from "../layouts/mainLayout"
 import { useState } from "preact/hooks";
-import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
 import { Autocomplete, Box, Button, Container, Divider, TextField, Typography } from "@mui/material";
+import "@uiw/react-md-editor/markdown-editor.css";
+import "@uiw/react-markdown-preview/markdown.css";
+import MDEditor from "@uiw/react-md-editor";
 
 const userGroups = [
 	{ group: "admin" },
@@ -24,8 +26,11 @@ export const CreateMailingPage = () => {
 				<Typography variant="h5" >
 					Mailing text
 				</Typography>
-				<Box>
-					<ReactQuill theme="snow" style={{ height: '200px', marginBottom: '80px' }} value={value} onChange={setValue} />
+				<Box sx={{ marginBottom: 3 }}>
+					<div data-color-mode="light">
+						<div className="wmde-markdown-var"> </div>
+						<MDEditor value={value} style={{ whiteSpace: 'pre-wrap' }} onChange={(val) => setValue(val || '')} />
+					</div>
 				</Box>
 
 				<Autocomplete
