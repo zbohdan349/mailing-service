@@ -1,6 +1,5 @@
 import MainLayout from "../layouts/mainLayout"
 import { useState } from "preact/hooks";
-import 'react-quill/dist/quill.snow.css';
 import { Autocomplete, Box, Button, Container, Divider, TextField, Typography } from "@mui/material";
 import MDEditor from "@uiw/react-md-editor";
 
@@ -26,7 +25,7 @@ export const CreateMailingPage = () => {
 				</Typography>
 				<Box sx={{ marginBottom: 3 }}>
 					<div data-color-mode="light">
-						<div className="wmde-markdown-var"> </div>
+						<div className={"wmde-markdown-var"}> </div>
 						<MDEditor value={value} style={{ whiteSpace: 'pre-wrap' }} onChange={(val) => setValue(val || '')} />
 					</div>
 				</Box>
