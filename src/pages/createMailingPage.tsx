@@ -2,8 +2,6 @@ import MainLayout from "../layouts/mainLayout"
 import { useState } from "preact/hooks";
 import 'react-quill/dist/quill.snow.css';
 import { Autocomplete, Box, Button, Container, Divider, TextField, Typography } from "@mui/material";
-import "@uiw/react-md-editor/markdown-editor.css";
-import "@uiw/react-markdown-preview/markdown.css";
 import MDEditor from "@uiw/react-md-editor";
 
 const userGroups = [
