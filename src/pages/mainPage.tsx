@@ -1,36 +1,31 @@
 
-import { Mailing, MailingElement, MailingStatus } from "../components/mailing";
+import { ActiveMailing, ActiveMailingElement } from "../components/activeMailing";
 import MainLayout from "../layouts/mainLayout"
 
 import { Container, Typography } from "@mui/material";
 
 
-const mailingInfo: Mailing[] = [
+const mailingInfo: ActiveMailing[] = [
 	{
 		mailingName: 'Test Mailing 1',
-		mailingStatus: MailingStatus.ACTIVE
 	},
 	{
 		mailingName: 'Test Mailing 2',
-		mailingStatus: MailingStatus.ACTIVE
 	},
 	{
 		mailingName: 'Test Mailing 3',
-		mailingStatus: MailingStatus.ACTIVE
 	},
 	{
 		mailingName: 'Test Mailing 4',
-		mailingStatus: MailingStatus.ACTIVE
 	},
 	{
 		mailingName: 'Test Mailing 5',
-		mailingStatus: MailingStatus.ACTIVE
 	},
 ]
 
-const printMailings = (mailingsInfo: Mailing[]) => {
+const printMailings = (mailingsInfo: ActiveMailing[]) => {
 	return mailingsInfo.map((mailing) => {
-		return <MailingElement mailingName={mailing.mailingName} mailingStatus={MailingStatus.ACTIVE} />
+		return <ActiveMailingElement mailingName={mailing.mailingName} />
 	})
 }
 

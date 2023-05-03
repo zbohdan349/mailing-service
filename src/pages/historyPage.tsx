@@ -1,38 +1,42 @@
 import { Container, Typography } from "@mui/material"
-import { Mailing, MailingStatus, MailingElement } from "../components/mailing"
 import MainLayout from "../layouts/mainLayout"
+import { FinishedMailing, FinishedMailingElement } from "../components/finishedMailing"
 
-const mailingInfo: Mailing[] = [
+const mailingInfo: FinishedMailing[] = [
 	{
 		mailingName: 'Test Mailing 1',
-		mailingStatus: MailingStatus.FINISHED
+		startDate: '29.09.2000',
+		endData: '30.09.2000'
 	},
 	{
 		mailingName: 'Test Mailing 2',
-		mailingStatus: MailingStatus.FINISHED
+		startDate: '29.09.2000',
+		endData: '30.09.2000'
 	},
 	{
 		mailingName: 'Test Mailing 3',
-		mailingStatus: MailingStatus.FINISHED
+		startDate: '29.09.2000',
+		endData: '30.09.2000'
 	},
 	{
 		mailingName: 'Test Mailing 4',
-		mailingStatus: MailingStatus.FINISHED
+		startDate: '29.09.2000',
+		endData: '30.09.2000'
 	},
 	{
 		mailingName: 'Test Mailing 5',
-		mailingStatus: MailingStatus.FINISHED
+		startDate: '29.09.2000',
+		endData: '30.09.2000'
 	},
 ]
 
-const printMailings = (mailingsInfo: Mailing[]) => {
+const printMailings = (mailingsInfo: FinishedMailing[]) => {
 	return mailingsInfo.map((mailing) => {
-		return <MailingElement mailingName={mailing.mailingName} mailingStatus={mailing.mailingStatus} />
+		return <FinishedMailingElement  {...mailing} />
 	})
 }
 
 export const HistoryPage = () => {
-
 	return (
 		<MainLayout>
 			<Container maxWidth="md" >

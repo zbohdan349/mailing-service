@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -17,7 +16,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import { ComponentChildren } from 'preact';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'preact/hooks';
 type Props = {
   children: ComponentChildren;
 }
@@ -74,7 +74,8 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function MainLayout(props: Props) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const navigate = useNavigate()
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -123,36 +124,30 @@ export default function MainLayout(props: Props) {
         </DrawerHeader>
         <Divider />
         <List>
-          <Link to="/">
-            <ListItem key={2} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <InboxIcon />
-                </ListItemIcon>
-                <ListItemText primary={"Main"} />
-              </ListItemButton>
-            </ListItem>
-          </Link>
-          <Link to="/create">
-            <ListItem key={2} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <InboxIcon />
-                </ListItemIcon>
-                <ListItemText primary={"Create mailing"} />
-              </ListItemButton>
-            </ListItem>
-          </Link>
-          <Link to="/history">
-            <ListItem key={2} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <InboxIcon />
-                </ListItemIcon>
-                <ListItemText primary={"History"} />
-              </ListItemButton>
-            </ListItem>
-          </Link>
+          <ListItem key={2} disablePadding onClick={() => { navigate('/') }}>
+            <ListItemButton>
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Main"} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem key={2} disablePadding onClick={() => { navigate('/create') }}>
+            <ListItemButton>
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Create mailing"} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem key={2} disablePadding onClick={() => { navigate('/history') }}>
+            <ListItemButton>
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText primary={"History"} />
+            </ListItemButton>
+          </ListItem>
         </List>
       </Drawer>
       <Main open={open}>

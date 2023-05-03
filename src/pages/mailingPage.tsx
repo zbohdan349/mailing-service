@@ -34,17 +34,17 @@ export const MailingPage = () => {
 				</Typography>
 				<Divider sx={{ marginBottom: 1 }} />
 				<Grid container spacing={2} sx={{ p: 2 }}>
-					<Grid item xs={6} md={9}>
+					<Grid item xs={8} md={10}>
 						<div style={{ flexGrow: 1 }}>
 							<Box sx={{ width: '100%', mr: 1, }}>
 								<LinearProgress variant="determinate" value={80} />
 							</Box>
 						</div>
 					</Grid>
-					<Grid item xs={6} md={3}>
+					<Grid item xs={4} md={2}>
 						<div>
-							<Box sx={{ width: 1 }}>
-								<Typography variant="body2">{`${"320000"}/1000000000000000`}</Typography>
+							<Box sx={{ width: 1, textAlign: 'center' }}>
+								<Typography variant="body2">{`${"320000"}/10000`}</Typography>
 							</Box>
 						</div>
 					</Grid>
