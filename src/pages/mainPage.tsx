@@ -1,43 +1,45 @@
 
+import { Empty, JSONCodec, connect } from "nats.ws";
 import { ActiveMailing, ActiveMailingElement } from "../components/activeMailing";
+
 import MainLayout from "../layouts/mainLayout"
 
 import { Container, Typography } from "@mui/material";
+import { useLoaderData } from "react-router-dom";
+import { useEffect, useState } from "preact/hooks";
+import { natsRequest } from "../hooks/useNatsRequest";
 
+export const mainPageLoader = async () => {
 
-const mailingInfo: ActiveMailing[] = [
-	{
-		mailingName: 'Test Mailing 1',
-	},
-	{
-		mailingName: 'Test Mailing 2',
-	},
-	{
-		mailingName: 'Test Mailing 3',
-	},
-	{
-		mailingName: 'Test Mailing 4',
-	},
-	{
-		mailingName: 'Test Mailing 5',
-	},
-]
+	let r = await natsRequest<ActiveMailing[]>('hello')
+
+	return { ...r }
+}
 
 const printMailings = (mailingsInfo: ActiveMailing[]) => {
-	return mailingsInfo.map((mailing) => {
-		return <ActiveMailingElement mailingName={mailing.mailingName} />
+	return mailingsInfo.map((mailing, i) => {
+		return <ActiveMailingElement key={i} mailingName={mailing.mailingName} />
 	})
 }
 
 export const MainPage = () => {
+	const [mailings, setMailings] = useState<ActiveMailing[]>([])
 
+	const result = useLoaderData() as {
+		headers: string[] | undefined;
+		data: ActiveMailing[];
+	};
+
+	useEffect(() => {
+		setMailings(result.data)
+	}, [result])
 	return (
 		<MainLayout>
 			<Container maxWidth="md" >
 				<Typography variant="h2" gutterBottom>
 					{"Active mailing"}
 				</Typography>
-				{printMailings(mailingInfo)}
+				{printMailings(mailings)}
 			</Container>
 		</MainLayout>
 	)

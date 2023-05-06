@@ -1,5 +1,5 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import { MainPage } from './pages/mainPage';
+import { MainPage, mainPageLoader } from './pages/mainPage';
 import { HistoryPage } from './pages/historyPage';
 import { MailingPage } from './pages/mailingPage';
 import { CreateMailingPage } from './pages/createMailingPage';
@@ -8,7 +8,8 @@ import { CreateMailingPage } from './pages/createMailingPage';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainPage />
+    element: <MainPage />,
+    loader: mainPageLoader
   },
   {
     path: "create",
